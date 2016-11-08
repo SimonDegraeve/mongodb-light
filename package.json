@@ -1,0 +1,40 @@
+{
+  "name": "mongodb-light",
+  "version": "0.0.0",
+  "description": "Thin MongoDB wrapper",
+  "license": "MIT",
+  "author": "Simon Degraeve <simon.degraeve@gmail.com>",
+  "repository": "github:SimonDegraeve/mongodb-light",
+  "homepage": "https://github.com/SimonDegraeve/mongodb-light#readme",
+  "bugs": "https://github.com/SimonDegraeve/mongodb-light/issues",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [],
+  "scripts": {
+    "lint": "kode lint",
+    "test": "kode test",
+    "build": "kode build",
+    "report-coverage": "kode report-coverage",
+    "release": "kode release"
+  },
+  "dependencies": {
+    "joi": "^9.2.0",
+    "mongodb": "^2.2.11"
+  },
+  "devDependencies": {
+    "kode": "^2.4.5"
+  },
+  "babel": {
+    "presets": [
+      "saya"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "saya"
+  },
+  "jest": {
+    "preset": "jest-preset-saya"
+  }
+}
