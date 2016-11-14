@@ -36,17 +36,28 @@ const CACHE = new Map();
 /**
  *
  */
-export function connect(uri, options = {}) {
-  return MongoClient.connect(uri, options).then(db => {
-    const token = CACHE.size ? Symbol(uri) : DEFAULT_TOKEN;
+export function ensureCache(token = DEFAULT_TOKEN) {
+  const cache = CACHE.get(token);
 
+  if (typeof cache === 'undefined') {
     CACHE.set(token, {
-      db,
+      db: null,
       IDType: ObjectID,
       models: {},
     });
+  }
 
-    return { db, token };
+  return CACHE.get(token);
+}
+
+/**
+ *
+ */
+export function connect(uri, options = {}, token = DEFAULT_TOKEN) {
+  return MongoClient.connect(uri, options).then(db => {
+    ensureCache(token).db = db;
+
+    return db;
   });
 }
 
@@ -54,28 +65,28 @@ export function connect(uri, options = {}) {
  *
  */
 export function disconnect(token = DEFAULT_TOKEN) {
-  return CACHE.get(token).db.close();
+  return ensureCache(token).db.close();
 }
 
 /**
  *
  */
 export function getDatabase(token = DEFAULT_TOKEN) {
-  return CACHE.get(token).db;
+  return ensureCache(token).db;
 }
 
 /**
  *
  */
 export function setIdType(type, token = DEFAULT_TOKEN) {
-  CACHE.get(token).IDType = type;
+  ensureCache(token).IDType = type;
 }
 
 /**
  *
  */
 export function getModels(token = DEFAULT_TOKEN) {
-  return CACHE.get(token).models;
+  return ensureCache(token).models;
 }
 
 /**
@@ -83,7 +94,7 @@ export function getModels(token = DEFAULT_TOKEN) {
  */
 export function createModel(collectionName, maybeSchema = {}, token = DEFAULT_TOKEN) {
   const schema = compileSchema(maybeSchema);
-  const cache = CACHE.get(token);
+  const cache = ensureCache(token);
 
   const model = {
     schema,
