@@ -20,11 +20,11 @@
     "release": "kode release"
   },
   "dependencies": {
-    "joi": "^9.2.0",
+    "joi": "^10.0.1",
     "mongodb": "^2.2.11"
   },
   "devDependencies": {
-    "kode": "^2.4.5"
+    "kode": "^2.4.11"
   },
   "babel": {
     "presets": [
