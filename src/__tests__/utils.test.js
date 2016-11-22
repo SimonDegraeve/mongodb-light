@@ -18,6 +18,10 @@ describe('toSort()', () => {
   it('supports custom string separator', () => {
     expect(toSort('a,-b', ',')).toEqual({ a: 1, b: -1 });
   });
+
+  it('transforms id', () => {
+    expect(toSort({ id: 1 })).toEqual({ _id: 1 });
+  });
 });
 
 describe('toFields()', () => {
@@ -31,6 +35,10 @@ describe('toFields()', () => {
 
   it('supports custom string separator', () => {
     expect(toFields('a,-b', ',')).toEqual({ a: 1, b: 0 });
+  });
+
+  it('transforms id', () => {
+    expect(toFields({ id: 1 })).toEqual({ _id: 1 });
   });
 });
 

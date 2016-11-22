@@ -5,7 +5,12 @@ function strToObj(value, negativeValue, positiveValue, separator = /\s+/) {
   if (typeof value === 'string') {
     return value.split(separator).reduce((obj, item) => {
       const order = item[0] === '-' ? negativeValue : positiveValue;
-      const key = order === negativeValue ? item.slice(1) : item;
+      let key = order === negativeValue ? item.slice(1) : item;
+
+      if (key === 'id') {
+        key = '_id'
+      }
+
       return { ...obj, [key]: order };
     }, {});
   }
