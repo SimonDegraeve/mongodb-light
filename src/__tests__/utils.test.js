@@ -20,7 +20,7 @@ describe('toSort()', () => {
   });
 
   it('transforms id', () => {
-    expect(toSort({ id: 1 })).toEqual({ _id: 1 });
+    expect(toSort('id')).toEqual({ _id: 1 });
   });
 });
 
@@ -38,7 +38,7 @@ describe('toFields()', () => {
   });
 
   it('transforms id', () => {
-    expect(toFields({ id: 1 })).toEqual({ _id: 1 });
+    expect(toFields('id')).toEqual({ _id: 1 });
   });
 });
 

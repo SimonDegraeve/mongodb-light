@@ -8,7 +8,7 @@ function strToObj(value, negativeValue, positiveValue, separator = /\s+/) {
       let key = order === negativeValue ? item.slice(1) : item;
 
       if (key === 'id') {
-        key = '_id'
+        key = '_id';
       }
 
       return { ...obj, [key]: order };
