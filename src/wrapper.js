@@ -76,11 +76,11 @@ export function getCollections() {
  *
  */
 export class Collection {
-  constructor(name, schema = {}, indexes = [], IdType = ObjectID) {
+  constructor(name, schema = {}, indexes = [], idType = ObjectID) {
     this.name = name;
     this.schema = compileSchema(schema);
     this.indexes = indexes;
-    this.IdType = IdType;
+    this.idType = idType;
     CACHE.collections.set(this.name, this);
   }
 
@@ -159,14 +159,14 @@ export class Collection {
    *
    */
   findById(id, options = {}) {
-    return CACHE.db.collection(this.name).findOne({ _id: new this.IdType(id) }, options).then(toResult);
+    return CACHE.db.collection(this.name).findOne({ _id: this.idType(id) }, options).then(toResult);
   }
 
   /**
    *
    */
   findByIdAndReplace(id, doc, options = {}) {
-    return CACHE.db.collection(this.name).findOneAndReplace({ _id: new this.IdType(id) }, doc, {
+    return CACHE.db.collection(this.name).findOneAndReplace({ _id: this.idType(id) }, doc, {
       returnOriginal: false,
       ...options,
     }).then(toResult);
@@ -176,7 +176,7 @@ export class Collection {
    *
    */
   findByIdAndUpdate(id, operation, options = {}) {
-    return CACHE.db.collection(this.name).findOneAndUpdate({ _id: new this.IdType(id) }, operation, {
+    return CACHE.db.collection(this.name).findOneAndUpdate({ _id: this.idType(id) }, operation, {
       returnOriginal: false,
       ...options,
     }).then(toResult);
@@ -186,7 +186,7 @@ export class Collection {
    *
    */
   findByIdAndDelete(id, options = {}) {
-    return CACHE.db.collection(this.name).findOneAndDelete({ _id: new this.IdType(id) }, options).then(toResult);
+    return CACHE.db.collection(this.name).findOneAndDelete({ _id: this.idType(id) }, options).then(toResult);
   }
 
   /**
