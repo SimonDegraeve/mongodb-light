@@ -8,6 +8,25 @@ import { toResult } from './utils';
 /**
  *
  */
+class CollectionSet extends Set {
+  add(collection) {
+    const { name, indexes } = collection;
+    const hasItem = this.has(name);
+    super.add(name);
+
+    if (!hasItem) {
+      indexes.forEach(([specs = {}, options = {}]) => {
+        CACHE.db.collection(name).ensureIndex(specs, { background: true, ...options }).catch(error =>
+          console.error(error),
+        );
+      });
+    }
+  }
+}
+
+/**
+ *
+ */
 const CACHE = {
   db: null,
   collections: new CollectionSet(),
@@ -42,25 +61,6 @@ export function getDatabase() {
  */
 export function getCollections() {
   return CACHE.collections;
-}
-
-/**
- *
- */
-class CollectionSet extends Set {
-  add(collection) {
-    const { name, indexes } = collection;
-    const hasItem = this.has(name);
-    super.add(name);
-
-    if (!hasItem) {
-      indexes.forEach(([specs = {}, options = {}]) => {
-        CACHE.db.collection(name).ensureIndex(specs, { background: true, ...options }).catch(error =>
-          console.error(error),
-        );
-      });
-    }
-  }
 }
 
 /**
