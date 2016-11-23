@@ -36,6 +36,10 @@ const CACHE = {
  *
  */
 export function connect(uri, options = {}) {
+  if (CACHE.db !== null) {
+    return Promise.resolve(CACHE.db);
+  }
+
   return MongoClient.connect(uri, options).then(db => {
     CACHE.db = db;
     return db;
@@ -46,7 +50,13 @@ export function connect(uri, options = {}) {
  *
  */
 export function disconnect() {
-  return CACHE.db.close();
+  if (CACHE.db === null) {
+    return Promise.resolve();
+  }
+
+  return CACHE.db.close().then(() => {
+    CACHE.db = null;
+  });
 }
 
 /**
