@@ -1,3 +1,9 @@
+<a name="2.0.6"></a>
+## [2.0.6](https://github.com/simondegraeve/mongodb-light/compare/v2.0.5...v2.0.6)
+> 2016-11-23
+
+* [dcd5fcf](https://github.com/simondegraeve/mongodb-light/commit/dcd5fcf) **Bugfix:** Fix indexes creation
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/simondegraeve/mongodb-light/compare/v2.0.4...v2.0.5)
 > 2016-11-23
