@@ -1,3 +1,9 @@
+<a name="2.0.8"></a>
+## [2.0.8](https://github.com/simondegraeve/mongodb-light/compare/v2.0.7...v2.0.8)
+> 2016-11-23
+
+* [3f261ab](https://github.com/simondegraeve/mongodb-light/commit/3f261ab) **Bugfix:** Fix wrong idType instantiation
+
 <a name="2.0.7"></a>
 ## [2.0.7](https://github.com/simondegraeve/mongodb-light/compare/v2.0.6...v2.0.7)
 > 2016-11-23
