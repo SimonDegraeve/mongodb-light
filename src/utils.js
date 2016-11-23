@@ -48,7 +48,10 @@ function normalizeId(doc) {
  *
  */
 export function toResult(result) {
-  if (Array.isArray(result)) {
+  if (typeof result === 'undefined' || result === null) {
+    return result;
+  }
+  else if (Array.isArray(result)) {
     return result.map(normalizeId);
   }
   else if (typeof result.value !== 'undefined' && typeof result._id === 'undefined') {
