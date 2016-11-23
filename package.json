@@ -24,11 +24,12 @@
     "mongodb": "^2.2.11"
   },
   "devDependencies": {
+    "babel-preset-node7": "^1.4.0",
     "kode": "^2.4.11"
   },
   "babel": {
     "presets": [
-      "saya"
+      "node7"
     ]
   },
   "eslintConfig": {
@@ -36,5 +37,8 @@
   },
   "jest": {
     "preset": "jest-preset-saya"
+  },
+  "engines": {
+    "node": ">=7.0.0"
   }
 }
