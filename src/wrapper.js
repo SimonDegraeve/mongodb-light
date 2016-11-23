@@ -8,17 +8,14 @@ import { toResult } from './utils';
 /**
  *
  */
-class CollectionSet extends Set {
-  add(collection) {
-    const { name, indexes } = collection;
+class CollectionMap extends Map {
+  set(name, collection) {
     const hasItem = this.has(name);
-    super.add(name);
+    super.set(name, collection);
 
-    if (!hasItem) {
-      indexes.forEach(([specs = {}, options = {}]) => {
-        CACHE.db.collection(name).ensureIndex(specs, { background: true, ...options }).catch(error =>
-          console.error(error),
-        );
+    if (!hasItem && collection.indexes.length) {
+      CACHE.db.collection(name).createIndexes(collection.indexes).catch(error => {
+        console.error(error);
       });
     }
   }
@@ -29,7 +26,7 @@ class CollectionSet extends Set {
  */
 const CACHE = {
   db: null,
-  collections: new CollectionSet(),
+  collections: new CollectionMap(),
 };
 
 /**
@@ -82,7 +79,7 @@ export class Collection {
     this.schema = compileSchema(schema);
     this.indexes = indexes;
     this.IdType = IdType;
-    CACHE.collections.add(this);
+    CACHE.collections.set(this.name, this);
   }
 
   /**
