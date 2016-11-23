@@ -1,3 +1,9 @@
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/simondegraeve/mongodb-light/compare/v2.0.1...v2.0.2)
+> 2016-11-23
+
+* [76a5c8c](https://github.com/simondegraeve/mongodb-light/commit/76a5c8c) **Bugfix:** Fix "used before defined"
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/simondegraeve/mongodb-light/compare/v2.0.0...v2.0.1)
 > 2016-11-23
