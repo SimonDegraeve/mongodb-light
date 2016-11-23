@@ -1,3 +1,9 @@
+<a name="2.0.0"></a>
+## [2.0.0](https://github.com/simondegraeve/mongodb-light/compare/v1.0.2...v2.0.0)
+> 2016-11-23
+
+* [c8dacf8](https://github.com/simondegraeve/mongodb-light/commit/c8dacf8) **Feature:** Re-publish as major
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/simondegraeve/mongodb-light/compare/v1.0.1...v1.0.2)
 > 2016-11-23
