@@ -14,11 +14,9 @@ class CollectionMap extends Map {
     super.set(name, collection);
 
     if (!hasItem && collection.indexes.length) {
-      CACHE.tasks.push(
-        CACHE.db.collection(name).createIndexes(collection.indexes).catch(error => {
-          console.error(error);
-        }),
-      );
+      CACHE.tasks.push(db => db.collection(name).createIndexes(collection.indexes).catch(error => {
+        console.error(error);
+      }));
     }
   }
 }
@@ -42,7 +40,7 @@ export function connect(uri, options = {}) {
 
   return MongoClient.connect(uri, options).then(db => {
     CACHE.db = db;
-    return Promise.all(CACHE.tasks);
+    return Promise.all(CACHE.tasks.map(task => task(db)));
   })
   .then(() => CACHE.db);
 }
