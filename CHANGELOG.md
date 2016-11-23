@@ -1,3 +1,9 @@
+<a name="2.0.7"></a>
+## [2.0.7](https://github.com/simondegraeve/mongodb-light/compare/v2.0.6...v2.0.7)
+> 2016-11-23
+
+* [8751d91](https://github.com/simondegraeve/mongodb-light/commit/8751d91) **Bugfix:** Handle null results
+
 <a name="2.0.6"></a>
 ## [2.0.6](https://github.com/simondegraeve/mongodb-light/compare/v2.0.5...v2.0.6)
 > 2016-11-23
