@@ -1,3 +1,9 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/simondegraeve/mongodb-light/compare/v2.0.0...v2.0.1)
+> 2016-11-23
+
+* [a787ed3](https://github.com/simondegraeve/mongodb-light/commit/a787ed3) **Bugfix:** Compile only missing features from node v7.0.0
+
 <a name="2.0.0"></a>
 ## [2.0.0](https://github.com/simondegraeve/mongodb-light/compare/v1.0.2...v2.0.0)
 > 2016-11-23
