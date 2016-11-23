@@ -1,3 +1,9 @@
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/simondegraeve/mongodb-light/compare/v2.0.4...v2.0.5)
+> 2016-11-23
+
+* [63e8ba6](https://github.com/simondegraeve/mongodb-light/commit/63e8ba6) **Tweak:** Defer indexes creation
+
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/simondegraeve/mongodb-light/compare/v2.0.3...v2.0.4)
 > 2016-11-23
